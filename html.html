@@ -1,0 +1,238 @@
+<!-- ===================================================== -->
+<!-- =============== GUIA RAPIDA HTML + CSS ============== -->
+<!-- =============== PARCIAL / CHULETA =================== -->
+<!-- ===================================================== -->
+
+<!--
+===========================================================
+1) HTML - ESTRUCTURA BASE
+===========================================================
+
+<!DOCTYPE html>  -> indica que el documento es HTML5
+<html lang="es"> -> idioma del documento
+<head>           -> metadatos, título, enlaces CSS, fuentes
+<body>           -> contenido visible
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi página</title>
+
+  <!-- Enlace a CSS externo -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===================================================== -->
+  <!-- 2) ETIQUETAS SEMANTICAS HTML5 -->
+  <!-- ===================================================== -->
+  <!--
+  header  -> encabezado principal
+  nav     -> menú de navegación
+  main    -> contenido principal
+  section -> bloque temático
+  article -> contenido independiente
+  aside   -> contenido secundario
+  footer  -> pie de página
+  -->
+
+  <header>
+    <h1>Título principal</h1>
+    <h2>Subtítulo</h2>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#proyectos">Proyectos</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section id="inicio">
+      <h2>Presentación</h2>
+      <p>Texto de introducción.</p>
+    </section>
+
+    <section id="proyectos">
+      <h2>Proyectos</h2>
+
+      <article>
+        <h3>Proyecto 1</h3>
+        <p>Descripción del proyecto.</p>
+      </article>
+
+      <article>
+        <h3>Proyecto 2</h3>
+        <p>Descripción del proyecto.</p>
+      </article>
+    </section>
+
+    <aside>
+      <h3>Dato extra</h3>
+      <p>Contenido complementario.</p>
+    </aside>
+  </main>
+
+  <footer>
+    <p>Pie de página</p>
+  </footer>
+
+
+  <!-- ===================================================== -->
+  <!-- 3) ETIQUETAS BASICAS -->
+  <!-- ===================================================== -->
+  <!--
+  h1-h6  -> encabezados
+  p      -> párrafo
+  a      -> enlace
+  img    -> imagen
+  ul     -> lista desordenada
+  ol     -> lista ordenada
+  li     -> item de lista
+  div    -> contenedor genérico en bloque
+  span   -> contenedor genérico en línea
+  -->
+
+  <section>
+    <h2>Ejemplos básicos</h2>
+    <p>Este es un párrafo con una palabra en <span>span</span>.</p>
+
+    <a href="https://github.com" target="_blank">Ir a GitHub</a>
+
+    <img src="img/foto.png" alt="Descripción de la imagen" width="300">
+
+    <ul>
+      <li>Elemento 1</li>
+      <li>Elemento 2</li>
+    </ul>
+
+    <ol>
+      <li>Paso 1</li>
+      <li>Paso 2</li>
+    </ol>
+
+    <div>Bloque genérico</div>
+  </section>
+
+
+  <!-- ===================================================== -->
+  <!-- 4) ID Y CLASS -->
+  <!-- ===================================================== -->
+  <!--
+  id    -> único, se usa para un solo elemento (#id en CSS)
+  class -> reutilizable, se usa para varios elementos (.clase en CSS)
+  -->
+
+  <section id="servicios">
+    <h2 class="titulo-seccion">Servicios</h2>
+    <p class="texto-destacado">Texto con clase.</p>
+  </section>
+
+
+  <!-- ===================================================== -->
+  <!-- 5) ENLACES -->
+  <!-- ===================================================== -->
+  <!--
+  href="#id"               -> enlace interno
+  href="pagina.html"       -> enlace a otra página
+  href="mailto:correo"     -> abrir correo
+  target="_blank"          -> abre en nueva pestaña
+  -->
+
+  <a href="#servicios">Ir a servicios</a>
+  <a href="mascotas.html">Ir a mascotas</a>
+  <a href="mailto:correo@ejemplo.com">Enviar correo</a>
+
+
+  <!-- ===================================================== -->
+  <!-- 6) FIGURE Y FIGCAPTION -->
+  <!-- ===================================================== -->
+  <!--
+  figure     -> agrupa imagen / recurso visual
+  figcaption -> texto descriptivo de la figura
+  -->
+
+  <figure>
+    <img src="img/lobo.png" alt="Lobo cyberpunk" width="250">
+    <figcaption>Lobo con estética cyberpunk</figcaption>
+  </figure>
+
+
+  <!-- ===================================================== -->
+  <!-- 7) FORMULARIOS -->
+  <!-- ===================================================== -->
+  <!--
+  form      -> contenedor del formulario
+  label     -> etiqueta del campo
+  input     -> campo de entrada
+  textarea  -> cuadro de texto largo
+  button    -> botón
+  required  -> obligatorio
+  for + id  -> conecta label con input
+  placeholder -> texto guía
+  -->
+
+  <section id="contacto">
+    <h2>Contacto</h2>
+
+    <form>
+      <div>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" placeholder="Escribe tu nombre..." required>
+      </div>
+
+      <div>
+        <label for="correo">Correo:</label>
+        <input type="email" id="correo" name="correo" placeholder="Escribe tu correo..." required>
+      </div>
+
+      <div>
+        <label for="numero">Número:</label>
+        <input type="tel" id="numero" name="numero" placeholder="Escribe tu número..." required>
+      </div>
+
+      <div>
+        <label for="mensaje">Mensaje:</label>
+        <textarea id="mensaje" name="mensaje" placeholder="Escribe tu mensaje..." required></textarea>
+      </div>
+
+      <button type="submit">Enviar</button>
+    </form>
+  </section>
+
+
+  <!-- ===================================================== -->
+  <!-- 8) MULTIMEDIA -->
+  <!-- ===================================================== -->
+  <!--
+  audio
+  video
+  iframe
+  -->
+
+  <audio controls>
+    <source src="audio/cancion.mp3" type="audio/mpeg">
+    Tu navegador no soporta audio.
+  </audio>
+
+  <video controls width="320">
+    <source src="video/demo.mp4" type="video/mp4">
+    Tu navegador no soporta video.
+  </video>
+
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID" title="Video"></iframe>
+
+
+  <!-- ===================================================== -->
+  <!-- 9) COMENTARIOS -->
+  <!-- ===================================================== -->
+  <!-- Esto es un comentario en HTML -->
+
+
+</body>
+</html>

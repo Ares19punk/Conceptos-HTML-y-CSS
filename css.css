@@ -1,0 +1,589 @@
+/* ===================================================== */
+/* ================ GUIA RAPIDA DE CSS ================= */
+/* ===================================================== */
+
+/*
+========================================================
+1) RESET
+========================================================
+Sirve para quitar márgenes y paddings por defecto
+y unificar el box model.
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/*
+========================================================
+2) VARIABLES CSS
+========================================================
+Se definen en :root y se usan con var().
+*/
+
+:root {
+  --color-fondo: #0a0a0f;
+  --color-panel: #11111b;
+  --color-neon-cyan: #00f5ff;
+  --color-neon-pink: #ff00c8;
+  --color-texto: #f5f5f5;
+
+  --font-title: "Orbitron", sans-serif;
+  --font-text: "Share Tech Mono", monospace;
+}
+
+/*
+========================================================
+3) BASE GENERAL
+========================================================
+*/
+
+body {
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  font-family: var(--font-text);
+}
+
+main {
+  max-width: 1100px;
+  margin: 0 auto; /* centra el contenedor */
+}
+
+/*
+========================================================
+4) TIPOGRAFIA
+========================================================
+font-family
+font-size
+font-weight
+letter-spacing
+line-height
+text-transform
+text-align
+text-shadow
+*/
+
+h1, h2, h3 {
+  font-family: var(--font-title);
+}
+
+h1 {
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-shadow: 0 0 10px var(--color-neon-cyan);
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+/*
+========================================================
+5) BOX MODEL
+========================================================
+content -> contenido
+padding -> espacio interno
+border  -> borde
+margin  -> espacio externo
+
+padding = aire dentro
+margin  = aire fuera
+*/
+
+section {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid var(--color-neon-cyan);
+  background-color: var(--color-panel);
+  border-radius: 12px;
+}
+
+/*
+========================================================
+6) IMAGENES
+========================================================
+display: block
+max-width: 100%
+height: auto
+object-fit
+*/
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.imagen-cuadrada {
+  width: 250px;
+  height: 250px;
+  object-fit: cover; /* llena la caja sin deformarse */
+}
+
+/*
+========================================================
+7) ENLACES Y BOTONES
+========================================================
+*/
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+button,
+.boton {
+  display: inline-block;
+  width: fit-content; /* ocupa solo lo necesario */
+  padding: 10px 18px;
+  border: 1px solid var(--color-neon-cyan);
+  border-radius: 999px;
+  background-color: var(--color-panel);
+  color: var(--color-neon-cyan);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover,
+.boton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 16px var(--color-neon-pink);
+}
+
+/*
+========================================================
+8) DISPLAY
+========================================================
+block        -> ocupa toda la línea
+inline       -> no rompe línea
+inline-block -> no rompe línea, pero acepta mejor width/padding
+flex         -> organiza en una dimensión
+grid         -> organiza en dos dimensiones
+*/
+
+/*
+========================================================
+9) FLEXBOX - TEORIA RAPIDA
+========================================================
+
+display: flex; -> activa Flexbox
+
+CONTENEDOR FLEX:
+- display: flex;
+- flex-direction
+- justify-content
+- align-items
+- flex-wrap
+- gap
+
+HIJOS FLEX:
+- flex
+- align-self
+*/
+
+/*
+EJE PRINCIPAL depende de flex-direction:
+
+Si flex-direction: row;
+- justify-content = horizontal
+- align-items = vertical
+
+Si flex-direction: column;
+- justify-content = vertical
+- align-items = horizontal
+*/
+
+/* EJEMPLO MENU */
+nav ul {
+  display: flex;
+  flex-direction: row;      /* fila */
+  justify-content: center;  /* centra horizontalmente */
+  align-items: center;      /* centra verticalmente */
+  gap: 20px;                /* separa hijos */
+  flex-wrap: wrap;          /* permite bajar si no caben */
+  list-style: none;
+}
+
+/* EJEMPLO FORMULARIO */
+form {
+  display: flex;
+  flex-direction: column; /* label, input, textarea uno debajo del otro */
+  gap: 14px;
+}
+
+/* EJEMPLO PRESENTACION */
+.presentacion {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.presentacion-imagen {
+  flex: 1;
+}
+
+.presentacion-texto {
+  flex: 2;
+}
+
+/*
+FLEX PROFUNDO:
+justify-content:
+- flex-start
+- center
+- flex-end
+- space-between
+- space-around
+- space-evenly
+
+align-items:
+- stretch
+- flex-start
+- center
+- flex-end
+*/
+
+/*
+========================================================
+10) GRID - TEORIA RAPIDA
+========================================================
+
+display: grid; -> activa Grid
+
+Contenedor Grid:
+- grid-template-columns
+- grid-template-rows
+- gap
+
+Grid sirve para filas + columnas
+Flex sirve mejor para una sola dirección
+*/
+
+/* EJEMPLO GRID DE TARJETAS */
+.grid-tarjetas {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/*
+grid-template-columns: repeat(3, 1fr)
+= 3 columnas iguales
+
+fr = fracción del espacio disponible
+repeat() = repetir patrón
+*/
+
+/* EJEMPLO GRID INTERNO */
+.tarjeta {
+  display: grid;
+  grid-template-rows: 220px auto auto;
+  gap: 12px;
+}
+
+/*
+grid-template-rows:
+- define filas
+- puede usar px, auto, fr, repeat()
+
+Ejemplos:
+grid-template-rows: 100px auto;
+grid-template-rows: repeat(3, 1fr);
+*/
+
+/*
+========================================================
+11) GAP, MARGIN Y PADDING
+========================================================
+
+gap     -> separa hijos dentro de flex/grid
+padding -> aire interno
+margin  -> aire externo
+
+Regla:
+- Flex/Grid ordena
+- gap separa hijos
+- padding da aire dentro
+- margin separa bloques
+*/
+
+/*
+========================================================
+12) POSITION
+========================================================
+static   -> normal
+relative -> se mueve respecto a sí mismo
+absolute -> sale del flujo y se posiciona respecto al padre posicionado
+fixed    -> se fija a la ventana
+*/
+
+.padre {
+  position: relative;
+}
+
+.hijo {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+/*
+========================================================
+13) Z-INDEX
+========================================================
+Controla qué elemento queda por encima de otro.
+Suele funcionar con position.
+*/
+
+.superior {
+  position: relative;
+  z-index: 2;
+}
+
+/*
+========================================================
+14) FONDOS
+========================================================
+background-color
+background-image
+linear-gradient
+repeating-linear-gradient
+*/
+
+.panel-cyber {
+  background: linear-gradient(to bottom, #111, #000);
+}
+
+.panel-lineas {
+  background: repeating-linear-gradient(
+    to bottom,
+    #0a0a0f 0px,
+    #0a0a0f 4px,
+    #11111b 4px,
+    #11111b 6px
+  );
+}
+
+/*
+========================================================
+15) BORDES, SOMBRAS Y GLOW
+========================================================
+border
+border-radius
+box-shadow
+text-shadow
+*/
+
+.tarjeta {
+  border: 1px solid var(--color-neon-cyan);
+  border-radius: 16px;
+  box-shadow: 0 0 10px var(--color-neon-cyan);
+}
+
+/*
+box-shadow: x y blur color;
+text-shadow: x y blur color;
+*/
+
+/*
+========================================================
+16) TRANSITION, TRANSFORM, HOVER
+========================================================
+*/
+
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 18px var(--color-neon-pink);
+}
+
+/*
+transform comunes:
+- translateY(-3px)
+- scale(1.03)
+- rotate(5deg)
+*/
+
+/*
+========================================================
+17) OPACITY Y FILTER
+========================================================
+opacity = transparencia del elemento completo
+filter = efecto visual
+*/
+
+.imagen {
+  opacity: 0.9;
+  filter: brightness(0.95) contrast(1.05);
+}
+
+.imagen:hover {
+  opacity: 1;
+  filter: brightness(1.05) contrast(1.15) saturate(1.1);
+}
+
+/*
+filter comunes:
+- brightness()
+- contrast()
+- grayscale()
+- blur()
+- saturate()
+*/
+
+/*
+========================================================
+18) ANIMACIONES
+========================================================
+animation
+@keyframes
+*/
+
+.titulo-animado {
+  animation: brillo 3s linear infinite;
+}
+
+@keyframes brillo {
+  0% {
+    color: white;
+    text-shadow: none;
+  }
+  50% {
+    color: var(--color-neon-cyan);
+    text-shadow: 0 0 10px var(--color-neon-cyan),
+                 0 0 20px var(--color-neon-cyan);
+  }
+  100% {
+    color: white;
+    text-shadow: none;
+  }
+}
+
+/*
+========================================================
+19) FORMULARIOS - FOCUS
+========================================================
+:focus = cuando el usuario activa el campo
+*/
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--color-neon-pink);
+  box-shadow: 0 0 12px var(--color-neon-pink);
+}
+
+/*
+========================================================
+20) RESPONSIVE - MEDIA QUERY
+========================================================
+@media (max-width: 48rem) = 768px
+Sirve para adaptar la página a pantallas más pequeñas
+*/
+
+@media (max-width: 48rem) {
+  .presentacion {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .grid-tarjetas {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  nav ul {
+    gap: 16px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+}
+
+/*
+Ejemplo móvil más pequeño
+*/
+@media (max-width: 30rem) {
+  .grid-tarjetas {
+    grid-template-columns: 1fr;
+  }
+
+  nav ul {
+    flex-direction: column;
+  }
+}
+
+/*
+========================================================
+21) UNIDADES
+========================================================
+px   -> fijo
+%    -> relativo al padre
+rem  -> relativo a la raíz
+em   -> relativo al tamaño del elemento
+vh   -> alto de ventana
+vw   -> ancho de ventana
+*/
+
+/*
+========================================================
+22) RESUMEN RAPIDO FLEX VS GRID
+========================================================
+
+FLEX:
+- una dimensión
+- fila o columna
+- menú
+- formulario
+- alinear cosas dentro de una tarjeta
+
+GRID:
+- dos dimensiones
+- filas y columnas
+- galerías
+- secciones de tarjetas
+- layouts grandes
+*/
+
+/*
+========================================================
+23) RECORDATORIOS IMPORTANTES DE EXAMEN
+========================================================
+
+HTML:
+- usar estructura semántica
+- usar alt en imágenes
+- conectar label con input usando for e id
+- usar section, article, nav, header, footer
+- usar figure y figcaption cuando aplique
+
+CSS:
+- reset primero
+- variables en :root
+- body y main base
+- usar Flexbox para organizar
+- usar Grid para tarjetas
+- usar gap para separar hijos
+- usar padding dentro y margin fuera
+- usar hover, transition, transform
+- usar media query para responsive
+
+SI TE PIDEN UNA PAGINA COMPLETA:
+1. estructura HTML
+2. header
+3. nav
+4. main
+5. varias secciones
+6. formulario o multimedia
+7. CSS con flex/grid
+8. hover + animación
+9. responsive
+*/
